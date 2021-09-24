@@ -97,7 +97,10 @@ func main() {
 ## 4. Creating and Reusing packages
 
 - Set `GOPATH` environment to your working space - define location for downloading 3rd packages
-- Create your package - `languages.go`
+
+> export GOPATH=/path/desired/here
+
+- Create your package - crete folder `lib` and add file `languages.go`
 
 ```go
 package lib
@@ -120,8 +123,7 @@ func GetAll() (map[string]string){
 }
 ```
 
-- Run `go install` - build the package `lib` which will be available at the `pkg` subdirectory of `GOPATH`.
-- Reuse package in your program
+- Reuse package in your program - create `test` program folder and add `main.go` file
 
 ```go
 package main
@@ -140,3 +142,15 @@ func main() {
   }
 }
 ```
+
+- Run `go install` - build the package `lib` which will be available at the `pkg` subdirectory of `GOPATH`, and create executable file in `$GOPATH/bin` and that can be called by typing program name (`test`) in terminal.
+
+## 5. Create your program with Go module
+
+With Go module - from Go version `1.11` we don't need to set `GOPATH` to your working directory - we are no longer limited to `GOPATH`
+
+Just open your IDE at your project folder - contains `go.mod` file
+
+Now we can import your package by `module_name/package_path`
+
+Refer: `https://github.com/quanghuy9289/go-lang/tree/master/ch11`
