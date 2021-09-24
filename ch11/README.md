@@ -48,3 +48,38 @@ func main() {
 }
 
 ```
+
+### 3. Using your packages that not export to module
+
+- Define your module name in `go.mod` file
+
+```go
+module github.com/quanghuy9289/gqlgen-samples/todos
+
+go 1.17
+```
+
+- Refer to package in your code in module project by `module name/package_path`
+
+```go
+package graph
+
+import "github.com/quanghuy9289/gqlgen-samples/todos/graph/model"
+
+type Resolver struct {
+  todos []*model.Todo
+}
+```
+
+In this: `github.com/quanghuy9289/gqlgen-samples/todos` - module name and `/graph/model` - package path
+Model is the package that defined in `model.go` of `todos/graph/model` folder
+
+```go
+package model
+type Todo struct {
+  ID   string `json:"id"`
+  Text string `json:"text"`
+  Done bool   `json:"done"`
+  User *User  `json:"user"`
+}
+```
