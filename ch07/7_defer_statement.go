@@ -10,7 +10,6 @@ func second() {
 	fmt.Println("2nd")
 }
 
-// defer moves the call to second to the end of the function
 // defer is often used when resources need to be freed
 /* Ex:
 	f, _ := os.Open(filename)
@@ -22,6 +21,7 @@ Has 3 advantages:
 	3 - Deferred functions are run event if a run-time panic occurs
 */
 func main() {
+	// defer moves the call to second to the end of the function
 	defer second()
 	first()
 }
